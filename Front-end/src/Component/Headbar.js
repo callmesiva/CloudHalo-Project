@@ -118,7 +118,7 @@ const Headbar = () => {
     socket.on("notification", (notification) => {
       let data = {
         header: " Welcome to notification !",
-        body: "This notification will be received every 30 second by socket.io",
+        body: "This notification will be received every 30 second via socket.io",
       };
 
       dispatch(addNotific(data));

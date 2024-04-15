@@ -25,7 +25,7 @@ const Detailbar = () => {
           },
         }
       );
-      dispatch(addNotes(inputData));
+      dispatch(addNotes([notesData, inputData]));
       setInputData("");
     } catch (error) {
       console.error("Error:", error);

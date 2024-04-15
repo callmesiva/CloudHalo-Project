@@ -42,7 +42,31 @@ const TaskInputSlice = createSlice({
       } else state.notes = action.payload;
     },
     addNotes: (state, action) => {
-      state.notes.notes.push(action.payload);
+      const [updatedTask, newNote] = action.payload;
+
+      const updatedTasks = state.tasks.map((task) => {
+        if (task._id === updatedTask._id) {
+          return {
+            ...task,
+            notes: [...task.notes, newNote],
+          };
+        }
+        return task;
+      });
+      const updatedTasks1 = state.backupTasks.map((task) => {
+        if (task._id === updatedTask._id) {
+          return {
+            ...task,
+            notes: [...task.notes, newNote],
+          };
+        }
+        return task;
+      });
+
+      state.backupTasks = updatedTasks1;
+      state.tasks = updatedTasks;
+
+      state.notes.notes.push(newNote);
     },
     deleteNotes: (state, action) => {
       state.notes.notes;

@@ -1,2 +1,2 @@
-const backendUrl = "https://cloudhalo-project.onrender.com";
+const backendUrl = "http://localhost:3800";
 export default backendUrl;

@@ -34,7 +34,7 @@ To run back-end
 * Open Integrated terminal in a Back-end folder
 * npm install
 * npm start
-* Back starts running on http://localhost:<PORT>
+* Back starts running on http://localhost:PORT
 
 
 

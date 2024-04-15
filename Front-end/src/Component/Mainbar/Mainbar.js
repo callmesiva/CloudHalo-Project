@@ -16,6 +16,7 @@ const Mainbar = () => {
   const taskData = useSelector((store) => store.taskInput.tasks);
   const taskContainerRef = useRef(null);
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleMarkCompleted = async (task) => {
     try {
@@ -79,6 +80,7 @@ const Mainbar = () => {
           Authorization: token,
         },
       });
+
       dispatch(addTask(response?.data?.data));
       dispatch(backedTask(response?.data?.data));
     } catch (error) {
@@ -88,13 +90,14 @@ const Mainbar = () => {
 
   useEffect(() => {
     getData();
+    setIsLoading(false);
   }, []);
 
   return (
     <div className="flex-none w-[350px] h-[460px]  dark:bg-black dark:text-white  bg-white rounded-2xl mr-10">
       <div className="flex flex-col h-full justify-between">
         <div ref={taskContainerRef} className="h-full overflow-y-auto">
-          {taskData.length !== 0
+          {isLoading == false
             ? taskData.map((task) => (
                 <div
                   key={task?._id}

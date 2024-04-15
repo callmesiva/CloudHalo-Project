@@ -7,10 +7,14 @@ import Home from "./Component/Home";
 import Login from "./Component/Login";
 import Signup from "./Component/Signup";
 import ProtectedRoute from "./Component/ProtectedRoute";
+import ErrorBoundary from "./Component/ErrorHandler/ErrorBoundary";
+import Error from "./Component/ErrorHandler/ErrorRoute";
 
 const AppLayout = () => (
   <Provider store={store}>
-    <Outlet />
+    <ErrorBoundary>
+      <Outlet />
+    </ErrorBoundary>
   </Provider>
 );
 
@@ -18,6 +22,7 @@ const AppProvider = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",

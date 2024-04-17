@@ -30,6 +30,7 @@ const Headbar = () => {
   };
 
   const handleThemeChange = () => {
+    //setIsDuedate(true);
     let isDark = localStorage.getItem("darkMode");
     if (openTheme == false && isDark !== "true") {
       document.documentElement.classList.add("dark");
@@ -41,6 +42,8 @@ const Headbar = () => {
       setOpenTheme(false);
     }
   };
+
+  // if (isDuedate) throw new Error("error throwed");
 
   function sortDate(arr, ascending) {
     return arr.sort((a, b) => {

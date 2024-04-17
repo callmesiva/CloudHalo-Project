@@ -10,7 +10,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:1234",
+  })
+);
 const server = http.createServer(app);
 const io = socketIo(server);
 

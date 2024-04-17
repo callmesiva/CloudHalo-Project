@@ -10,13 +10,13 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(helmet());
-app.use(
-  cors({
-    origin: "http://localhost:1234",
-  })
-);
+app.use(cors());
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+  cors: {
+    origin: "http://localhost:1234",
+  },
+});
 
 // Health check API
 app.get("/app/status", async (req, res) => {

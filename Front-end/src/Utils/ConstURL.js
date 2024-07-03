@@ -1,2 +1,2 @@
-const backendUrl = "http://localhost:3800";
+const backendUrl = process.env.BackendURL;
 export default backendUrl;
